@@ -5,7 +5,9 @@ using UnityEngine;
 public class HazardController : MonoBehaviour
 {
     [SerializeField]
-    float speed = 7;
+    Vector2 speedMinMax;
+    float speed;
+
     float screenHalfHeight;
     float screenEdgeBottom;
 
@@ -13,6 +15,8 @@ public class HazardController : MonoBehaviour
     {
         screenHalfHeight = Camera.main.orthographicSize;
         screenEdgeBottom = -screenHalfHeight - transform.localScale.y;
+
+        speed = Mathf.Lerp(speedMinMax.x, speedMinMax.y, Difficulty.GetDifficultyPercent());
     }
 
     // Update is called once per frame
