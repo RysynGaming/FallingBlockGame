@@ -14,6 +14,6 @@ public static class Difficulty
             {
                 return 1f;
             } else //*/
-        return Mathf.Clamp(Time.time / secondsToMaxDifficulty, 0, 1);
+        return Mathf.Clamp(Time.timeSinceLevelLoad / secondsToMaxDifficulty, 0, 1);
     }
 }

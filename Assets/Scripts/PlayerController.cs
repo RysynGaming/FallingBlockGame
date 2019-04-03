@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     float screenHalfWidthWorldUnits = 9.5f;
     float halfPlayerWidth;
 
+    public event System.Action OnPlayerDeath;
+
     void Start()
     {
         halfPlayerWidth = transform.localScale.x / 2f;
@@ -38,6 +40,10 @@ public class PlayerController : MonoBehaviour
     {
         if (triggerCollider.tag == "Hazard")
         {
+            if (OnPlayerDeath != null)
+            {
+                OnPlayerDeath();
+            }
             Destroy(gameObject);
         }
     }
